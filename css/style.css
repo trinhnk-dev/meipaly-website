@@ -1,0 +1,507 @@
+@font-face {
+  src: url(../fonts/Lato-Regular.ttf);
+  font-family: lato;
+}
+
+@font-face {
+  src: url(../fonts/Lato-Bold.ttf);
+  font-family: lato-bold;
+}
+
+* {
+  font-family: "lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(to right, blue, green);
+  z-index: 10;
+}
+
+.header .logo {
+  text-decoration: none;
+  color: white;
+  font-size: 40px;
+}
+
+.header .logo span {
+  font-family: "lato-bold", sans-serif;
+}
+.header .navbar-toggler {
+  display: none;
+}
+
+.header .navbar {
+  display: flex;
+}
+
+.header .navbar a {
+  text-decoration: none;
+  color: #ffffff;
+  margin-left: 30px;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.header .navbar a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background-color: #e62b4a;
+  /* transition-property: width;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+  transition-delay: 0.5s; */
+  transition: all 300ms linear 0s;
+}
+
+/* transition: su thay doi */
+
+.header .navbar a:hover::after {
+  width: 100%;
+}
+
+.header .navbar a:hover {
+  color: #e62b4a;
+}
+
+
+
+/* flexbox */
+.header .container {
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  /* flex-direction: row-reverse; ngang ngược lại với mặc định là trái qua phải */
+  /* flex-direction: column; từ trên xuống */
+  /* flex-direction: column-reverse; từ dưới lên*/
+
+  /* justify-content: flex-start; dùng row nên trục chính là ngang, flex-start đẩy hết về bên trái */
+  /* justify-content: flex-end; đẩy hết về bên phải */
+  /* justify-content: center; vô giữa */
+  /* justify-content: space-between; cách nhau ra xa nhất có thể giữa 2 phần */
+  /* justify-content: space-around; giãn đều */
+  justify-content: space-between;
+
+  /* align-items: flex-start; ở trên */
+  /* align-items: flex-end; ở dưới */
+  align-items: center;
+}
+
+.carousel {
+  background-image: url(../img/home_slider.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 800px;
+  position: relative;
+}
+
+.carousel .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  color: white;
+}
+
+.carousel p {
+  font-size: 25px;
+}
+
+.carousel h1 {
+  font-size: 50px;
+}
+
+.carousel h1::before {
+  content: "THE";
+}
+
+.carousel h1::after {
+  content: "!!!";
+}
+
+.carousel a {
+  background-color: #e62b4a;
+  color: #ffffff;
+  padding: 10px 30px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.carousel i {
+  font-size: 35px;
+  /* animation-name: bounce;
+  animation-duration: 2s;
+  animation-timing-function: 'linear';
+  animation-delay: 0s;
+  animation-iteration-count: infinite; */
+
+  animation: bounce 2s linear infinite 0s;
+}
+
+.carousel::before {
+  content: "";
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-bottom: 40px solid #ffffff;
+  /* border-top: 20px solid orange; */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  /* transform: translate(x, y); */
+  transform: translate(-50%, 0);
+}
+
+.portfolio {
+  padding: 80px 0px;
+}
+
+.portfolio .title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.portfolio .main .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.portfolio .main .row .col {
+  width: calc(100% / 3);
+  padding: 0px 15px;
+  margin-bottom: 30px;
+}
+
+.portfolio .main .item img {
+  width: 100%;
+  filter: grayscale(100%) contrast(50%);
+  display: block;
+}
+
+.portfolio .main .item {
+  position: relative;
+  overflow: hidden;
+  /* box-shadow: x y blur color; */
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio .main .item:hover .info {
+  visibility: visible;
+  opacity: 1;
+}
+
+.portfolio .main .item .info {
+  background-color: rgba(230, 43, 74, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  transition: all 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portfolio .main .item .info .action i {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  transform: scale(0, 0);
+  transition: all 0.3s;
+}
+
+.portfolio .main .item:hover .info .action i {
+  transform: scale(1, 1);
+}
+
+.portfolio .main .item .info .action {
+  text-align: right;
+}
+
+.portfolio .main .item .info .detail {
+  transform: translateY(50px);
+  color: white;
+  transition: all 0.5s;
+}
+
+.portfolio .main .item:hover .info .detail {
+  transform: translateY(0);
+}
+
+/* CSS GRID LAYOUT */
+.post {
+  padding: 80px 0px;
+  background-color: #f3f3f3;
+}
+
+.post .title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.post .main .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* gap: 30px; */
+  /* row-gap: ; */
+  /* column-gap: ; */
+  /* grid-template-rows: 100px 200px 300px; */
+}
+
+.post .main .item img {
+  width: 100%;
+  display: block;
+  /* height: 100%; */
+  /* filter: grayscale(30%) contrast(50%); */
+}
+
+.post .main .item-1 {
+  /* n so luong bat dau, m so luong cot muon chiem */
+  /* grid-column: n/span m; */
+  grid-column: 1 / span 2;
+  /* grid-row: n/span m; */
+  grid-row: 1 / span 2;
+}
+
+.post .main .item-8 {
+  grid-column: 3 / span 2;
+  grid-row: 3 / span 2;
+}
+
+.main .row .item {
+  position: relative;
+}
+
+.post .main .item .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.post .main .item:hover .overlay {
+  display: none;
+}
+
+.experience {
+  padding: 80px 0px;
+  background-image: url(../img/bussiness_img_1.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  /* background-attachment: fixed; co dinh background */
+  background-attachment: fixed;
+}
+
+.experience .title {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.experience .main video {
+  width: 100%;
+}
+
+.contact {
+  padding: 80px 0px;
+}
+
+.contact .title {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.contact .main .row {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 30px;
+}
+
+.contact .main .item-left iframe {
+  width: 100%;
+  height: 430px;
+  display: block;
+}
+
+.contact .main .item-right .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact .main .item-right .form input,
+.contact .main .item-right .form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.contact .main .item-right .form button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+/* responsive vs adaptive */
+
+/* desktop */
+@media screen and (max-width: 1200px) {
+  .header .logo {
+    color: pink;
+  }
+  .header .navbar{
+    width: 100%;
+  }
+  
+  .portfolio .main .row .col {
+    width: 50%;
+  }
+  .post .main .row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .post .main .item-1,
+  .post .main .item-8 {
+    grid-row: initial;
+    grid-column: initial;
+  }
+}
+
+.back-to-top{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.back-to-top i{
+  color: #ffffff;
+  font-size: 23px;
+  /* transform: rotate(); xoay */
+  transform: rotate(0);
+}
+
+.back-to-top:hover i{
+  transform: rotate(-180deg);
+  transition: all 0.5s;
+}
+/* tablet */
+@media screen and (max-width: 992px) {
+  .header .navbar {
+    display: none;
+  }
+  .header .navbar-toggler {
+    display: block;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    width: 100%;
+  }
+}
+
+/* điện thoại: ngang */
+@media screen and (max-width: 768px) {
+  
+}
+
+/* điện thoại: dọc */
+@media screen and (max-width: 576px) {
+  /* css ở đây */
+
+  .portfolio .main .row .col {
+    width: 100%;
+  }
+  .post .main .row {
+    display: block;
+  }
+  .contact .main .row {
+    display: block;
+  }
+  .contact .main .item-left {
+    margin-bottom: 50px;
+  }
+  .contact .main .item-right .form input,
+  .contact .main .item-right .form textarea {
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes bounce{
+  /* 0%{}
+  50%{}
+  75%{}
+  100%{}
+  4 điểm */
+  0%{
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50%{
+    transform: translateY(100px);
+    opacity: 0.5;
+  }
+  75%{
+    transform: translateY(80px);
+    opacity: 0.8;
+  }
+  100%{
+    transform: translateY(100px);
+    opacity: 1;
+  }
+}
+
+.service .item{
+  height: 200px;
+  background-color: green;
+}
